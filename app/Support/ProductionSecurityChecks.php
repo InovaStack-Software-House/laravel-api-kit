@@ -10,7 +10,10 @@ final class ProductionSecurityChecks
 {
     public static function assertForEnvironment(string $environment): void
     {
-        if ('production' !== $environment) {
+        // Only enforce checks when the environment is explicitly declared as
+        // production. Fresh checkouts without a .env (e.g. composer install /
+        // package:discover) default to "production" but are not production.
+        if (false === getenv('APP_ENV') || 'production' !== $environment) {
             return;
         }
 
