@@ -1,0 +1,12 @@
+title = "laravel-api-kit"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Example/placeholder secret values in documentation and generated files"
+paths = [
+    '''README\.md''',
+    '''(\.claude|\.factory|\.agents|\.grok)/skills/laravel-best-practices/rules/config\.md''',
+    '''\.scribe/''',
+]

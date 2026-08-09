@@ -23,13 +23,14 @@ jobs:
           extensions: mbstring, dom, curl, sqlite3, pdo_sqlite
           coverage: none
 
+      - name: Prepare environment
+        run: cp .env.example .env
+
       - name: Install dependencies
         run: composer install --no-interaction --no-progress --prefer-dist
 
-      - name: Prepare app key
-        run: |
-          cp .env.example .env
-          php artisan key:generate
+      - name: Generate app key
+        run: php artisan key:generate
 
       - name: Run test suite
         run: php artisan test

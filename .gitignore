@@ -21,6 +21,9 @@
 /public/hot
 /public/storage
 /public/docs
+/.scribe/.filehashes
+/.scribe/endpoints.cache/
+/.scribe/endpoints/
 /storage/*.key
 /storage/pail
 /vendor
