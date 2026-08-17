@@ -50,7 +50,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      # `gitleaks-action@v3` exige licença para organizações (e o free key só
+      # vale para repos públicos). O gitleaks em si é open-source: roda o
+      # binário oficial via Docker, direto no runner self-hosted.
       - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/repo" \
+            zricethezav/gitleaks:latest detect \
+            --source /repo \
+            --no-banner
